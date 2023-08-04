@@ -1,0 +1,13 @@
+apiVersion: v2
+version: 1.5.15
+appVersion: 5.5.13
+name: podinfo
+engine: gotpl
+description: Application Promotion Podinfo Helm chart for Kubernetes
+home: https://github.com/weavegitops/application-promotion-podinfo
+maintainers:
+  - name: Weaveworks
+    email: support@weave.works
+sources:
+  - https://github.com/weavegitops/application-promotion-podinfo
+kubeVersion: ">=1.19.0-0"
