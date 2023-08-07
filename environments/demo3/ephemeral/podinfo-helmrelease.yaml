@@ -34,7 +34,7 @@ spec:
     cleanupOnFail: false
   values:
     service:
-      enabled: false
+      enabled: true
       externalPort: 80
     ingress:
       enabled: true
