@@ -34,11 +34,14 @@ spec:
     cleanupOnFail: false
   values:
     service:
-      enabled: false
+      enabled: true
       externalPort: 80
     ingress:
       enabled: true
       className: nginx
+      # secretName: podinfo-tls
+      # tls:
+      # - ${LOADBALANCER}
       annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$1
         nginx.ingress.kubernetes.io/service-upstream: "true"
