@@ -55,7 +55,7 @@ spec:
       message: "Hi, this message is from the Helm values for prd"
       color: ""
     canary:
-      enabled: true
+      enabled: false
       loadtester:
         url: flagger-flagger-loadtester.flagger
       ingress:
