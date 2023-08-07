@@ -3,7 +3,7 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Provider
 metadata:
   name: promotion
-  namespace: fabrikam-app
+  namespace: podinfo
 spec:
   type: generic
   address: "https://promotions.demo3.weavegitops.com/promotion/default/podinfo/stage"
@@ -12,12 +12,12 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Alert
 metadata:
   name: promotion
-  namespace: fabrikam-app
+  namespace: podinfo
 spec:
   eventSeverity: info
   eventSources:
   - kind: HelmRelease
-    name: fabrikam-app
+    name: podinfo
   exclusionList:
   - .*upgrade.*has.*started
   - .*is.*not.*ready
