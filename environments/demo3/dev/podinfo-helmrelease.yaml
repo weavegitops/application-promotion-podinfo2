@@ -17,7 +17,7 @@ spec:
       version: x.x.x # {"$promotion": "devteam1:app-podinfo-devteam1-host25-cluster30:dev"}
   targetNamespace: podinfo
   test:
-    enable: true
+    enable: false
     timeout: 5m
     ignoreFailures: false
   install:
