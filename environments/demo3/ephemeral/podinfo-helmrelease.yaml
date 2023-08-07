@@ -1,0 +1,60 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: podinfo
+  namespace: podinfo
+  annotations:
+    metadata.weave.works/app-url: https://${LOADBALANCER}
+spec:
+  interval: 2m
+  chart:
+    spec:
+      chart: ./charts/podinfo
+      sourceRef:
+        kind: GitRepository
+        name: "gitrepository"
+      version: '>=0.0.3'
+  targetNamespace: podinfo
+  test:
+    enable: false
+    timeout: 5m
+    ignoreFailures: false
+  install:
+    remediation:
+      retries: 2
+  upgrade:
+    remediation:
+      retries: 2
+  rollback:
+    timeout: 5m
+    disableWait: false
+    disableHooks: false
+    recreate: false
+    force: false
+    cleanupOnFail: false
+  values:
+    service:
+      enabled: false
+      externalPort: 80
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /$1
+        nginx.ingress.kubernetes.io/service-upstream: "true"
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: ${LOADBALANCER}
+          paths:
+            - path: "/?(.*)"
+              pathType: Prefix
+            - path: "/(api/?.*)"
+              pathType: Prefix
+    replicaCount: 1
+    ui:
+      message: "Hi, this message is from the Helm values for dev"
+      color: ""
+    canary:
+      enabled: false
+    hpa:
+      enabled: false
