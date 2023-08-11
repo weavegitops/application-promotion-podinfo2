@@ -57,9 +57,9 @@ spec:
     canary:
       enabled: true
       loadtester:
-        url: flagger-flagger-loadtester.flagger
+        url: "flagger-loadtester.fabrikam-app:80"
       ingress:
-        url: demo3-cluster27.weavegitops.com/prd/podinfo/
+        url: "istio-gateway.istio-system:80"
     hpa:
       enabled: false
       maxReplicas: 1
