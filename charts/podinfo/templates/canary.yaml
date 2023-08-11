@@ -80,5 +80,5 @@ spec:
         url: "http://{{ .Values.canary.loadtester.url }}"
         timeout: 5s
         metadata:
-          cmd: "hey -z 1m -q 10 -c 2 -H 'Cookie: type=insider' http://{{ .Values.canary.ingress.url}}"
+          cmd: "hey -z 4m -q 10 -c 2 -H 'Cookie: type=insider' http://{{ .Values.canary.ingress.url}}"
 {{- end }}
