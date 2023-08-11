@@ -53,13 +53,13 @@ spec:
     # percentage (0-100)
     stepWeight: 5
     metrics:
-      # - name: error-rate
-      #   templateRef:
-      #     name: error-rate
-      #     namespace: istio-system
-      #   thresholdRange:
-      #     max: 1
-      #   interval: 30s
+      - name: error-rate
+        templateRef:
+          name: error-rate
+          namespace: istio-system
+        thresholdRange:
+          max: 1
+        interval: 30s
       - name: latency
         templateRef:
           name: latency
@@ -80,5 +80,5 @@ spec:
         url: "http://{{ .Values.canary.loadtester.url }}"
         timeout: 5s
         metadata:
-          cmd: "hey -z 4m -q 10 -c 2 -H 'Cookie: type=insider' http://{{ .Values.canary.ingress.url}}"
+          cmd: "hey -z 1m -q 10 -c 2 -H 'Cookie: type=insider' http://{{ .Values.canary.ingress.url}}"
 {{- end }}
