@@ -34,14 +34,14 @@ spec:
 
 
   analysis:
-    match:
-      - headers:
-          user-agent:
-            regex: ".*Firefox.*"
-            #regex: "^(?!.*(?:Chrome|Edge)).*Safari"
-      - headers:
-          cookie:
-            regex: "^(.*?;)?(type=insider)(;.*)?$"
+    # match:
+    #   - headers:
+    #       user-agent:
+    #         regex: ".*Firefox.*"
+    #         #regex: "^(?!.*(?:Chrome|Edge)).*Safari"
+    #   - headers:
+    #       cookie:
+    #         regex: "^(.*?;)?(type=insider)(;.*)?$"
     # schedule interval (default 60s)
     interval: 10s
     # max number of failed metric checks before rollback
