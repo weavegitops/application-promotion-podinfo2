@@ -1,0 +1,46 @@
+apiVersion: gitops.weave.works/v1alpha1
+kind: GitopsCluster
+metadata:
+  labels:
+    env: florida
+    flagger: enabled
+    podinfo: enabled
+    templates.weave.works/template-name: deploy-a-store
+    templates.weave.works/template-namespace: default
+    weave.works/capi: bootstrap-flux
+    weave.works/fluxupgrade: Disable
+    weave.works/fluxversion: v2.0.0-rc.5
+  name: cluster-12-orlando
+  namespace: default
+  annotations:
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/weavegitops/application-promotion-podinfo2.git\",\"head_branch\":\"wge-create-branch-vix5jc\",\"base_branch\":\"main\",\"title\":\"Create resource orlando\",\"description\":\"This PR creates a deploy-a-store instance\",\"template_name\":\"deploy-a-store\",\"parameter_values\":{\"FLUX_UPGRADE\":\"Disable\",\"FLUX_VERSION\":\"v2.0.0-rc.5\",\"RESOURCE_NAME\":\"orlando\",\"STORE_ENVIRONMENT\":\"florida\",\"STORE_NUMBER\":\"12\"},\"commit_message\":\"Create deploy-a-store instance\",\"credentials\":{},\"template_namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
+    templates.weave.works/created-files: "{\"files\":[\"clusters/management/clusters/default/orlando.yaml\"]}"
+spec:
+  capiClusterRef:
+    name: cluster-12-orlando
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+    templates.weave.works/create-request: "{\"repository_url\":\"https://github.com/weavegitops/application-promotion-podinfo2.git\",\"head_branch\":\"wge-create-branch-vix5jc\",\"base_branch\":\"main\",\"title\":\"Create resource orlando\",\"description\":\"This PR creates a deploy-a-store instance\",\"template_name\":\"deploy-a-store\",\"parameter_values\":{\"FLUX_UPGRADE\":\"Disable\",\"FLUX_VERSION\":\"v2.0.0-rc.5\",\"RESOURCE_NAME\":\"orlando\",\"STORE_ENVIRONMENT\":\"florida\",\"STORE_NUMBER\":\"12\"},\"commit_message\":\"Create deploy-a-store instance\",\"credentials\":{},\"template_namespace\":\"default\",\"template_kind\":\"GitOpsTemplate\"}"
+    templates.weave.works/created-files: "{\"files\":[\"clusters/management/clusters/default/orlando.yaml\"]}"
+  labels:
+    templates.weave.works/template-name: deploy-a-store
+    templates.weave.works/template-namespace: default
+  name: cluster-12-orlando
+  namespace: default
+spec:
+  interval: 30s
+  path: ./kustomize/cluster/vcluster
+  postBuild:
+    substitute:
+      CLUSTER_NAME: cluster-12-orlando
+      STORE_NUMBER: "12"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
