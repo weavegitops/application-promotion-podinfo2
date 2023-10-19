@@ -4,7 +4,7 @@ metadata:
   name: podinfo
   namespace: podinfo
   annotations:
-    metadata.weave.works/app-url: http://demo3-cluster30.weavegitops.com/prd/podinfo/
+    metadata.weave.works/app-url: http://demo3-cluster30.trial.cx.weave.works/prd/podinfo/
 spec:
   interval: 2m
   chart:
@@ -44,7 +44,7 @@ spec:
         nginx.ingress.kubernetes.io/rewrite-target: /$1
         nginx.ingress.kubernetes.io/service-upstream: "true"
       hosts:
-        - host: demo3-cluster30.weavegitops.com
+        - host: demo3-cluster30.trial.cx.weave.works
           paths:
             - path: "/prd/podinfo/?(.*)"
               pathType: Prefix
