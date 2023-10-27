@@ -17,7 +17,7 @@ spec:
       version: '1.5.39' # {"$promotion": "default:podinfo-app:north-america"}
   targetNamespace: podinfo
   test:
-    enable: false
+    enable: true
     timeout: 5m
     ignoreFailures: false
   install:
