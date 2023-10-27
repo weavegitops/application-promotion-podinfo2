@@ -18,9 +18,7 @@ spec:
   eventSources:
   - kind: HelmRelease
     name: podinfo
-  exclusionList:
-  - .*upgrade.*has.*started
-  - .*is.*not.*ready
-  - ^Dependencies.*
+  inclusionList:
+  - .*test.*succeeded
   providerRef:
     name: promotion
