@@ -18,8 +18,6 @@ spec:
   eventSources:
   - kind: HelmRelease
     name: podinfo
-    inclusionList:
-    - .*test.*succeeded
   exclusionList:
     - .*error.*
     - .*failed.*
