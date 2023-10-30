@@ -14,7 +14,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: podinfo-helm-repo
-      version: '1.5.40' # {"$promotion": "default:podinfo-app:florida"}
+      version: '1.5.41' # {"$promotion": "default:podinfo-app:florida"}
   targetNamespace: podinfo
   test:
     enable: false
