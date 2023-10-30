@@ -14,7 +14,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: podinfo-helm-repo
-      version: '1.5.40' # {"$promotion": "default:podinfo-app:stage"}
+      version: '1.5.41' # {"$promotion": "default:podinfo-app:stage"}
   targetNamespace: podinfo
   test:
     enable: true
