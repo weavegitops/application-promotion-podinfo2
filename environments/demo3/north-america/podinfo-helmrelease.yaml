@@ -4,7 +4,7 @@ metadata:
   name: podinfo
   namespace: podinfo
   annotations:
-    metadata.weave.works/app-url: http://${CLUSTER_NAME}.trial.cx.weave.works/
+    metadata.weave.works/app-url: http://${CLUSTER_NAME}-default.sa-demo.trial.cx.weave.works/
 spec:
   interval: 2m
   chart:
